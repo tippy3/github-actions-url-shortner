@@ -10,23 +10,31 @@ permissions:
   id-token: write
   pages: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: https://service-catalogue.zozo-inc.com/
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: build
+      - name: Build
         run: ./build.sh
 
-      - name: upload
-        uses: actions/upload-pages-artifact@v1
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload
+        uses: actions/upload-pages-artifact@v2
         with:
           path: _site
 
-      - name: deploy
-        uses: actions/deploy-pages@v1
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v2
