@@ -4,7 +4,7 @@ GitHub Pagesで短縮URLっぽいものを作ってみた。
 
 例: https://tippy3.github.io/redirect/google → https://google.com
 
-あれ？ 逆に長くなってる〜！ ドメイン取得しよ。
+独自ドメインにすれば使えるかも。
 
 ## 使い方
 
