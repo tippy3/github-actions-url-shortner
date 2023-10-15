@@ -13,13 +13,12 @@ while read row; do
   echo "<!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv=\"refresh\" content=\"0; url=$url\">
+  <meta name=\"robots\" content=\"none\">
   <title>Redirecting...</title>
 </head>
 <body>
   <p>Redirecting to <a rel=\"noreferrer\" href=\"$url\">$url</a></p>
-  <script>
-    location.href=\"$url\";
-  </script>
 </body>
 </html>" > "_site/$short_url/index.html"
 
